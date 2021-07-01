@@ -1,5 +1,5 @@
 import MeetupList from "../components/meetups/MeetupList";
-
+import { useEffect, useState } from 'react';
 const MEETUP_DATA = [
   {
     id: "m1",
@@ -20,7 +20,11 @@ const MEETUP_DATA = [
 ];
 
 const HomePage = () => {
-  return <MeetupList meetups={MEETUP_DATA} />;
+  const [loadMeetups,setLoadMeetups] = useState([]);
+  useEffect(()=>{
+    setLoadMeetups(MEETUP_DATA);
+  },[]);
+  return <MeetupList meetups={loadMeetups} />;
 };
 
 export default HomePage;
